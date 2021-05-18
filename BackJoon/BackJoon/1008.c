@@ -7,7 +7,7 @@ int BackJoon1008(void)
 {
     double num1, num2;
 
-    scanf("%lf %lf", &num1, &num2);
+    scanf("%f %f", &num1, &num2);
 
     printf("%.9lf\n", num1 / num2);
 

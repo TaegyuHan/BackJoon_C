@@ -6,9 +6,14 @@
 
 int BackJoon10430(void)
 {
-	int num1, num2, num3;
+	int A, B, C;
 
-	scanf("%d %d %d", &num1, &num2, &num3);
+	scanf("%d %d %d", &A, &B, &C);
+
+	printf("%d\n", (A + B) % C );
+	printf("%d\n", ((A % C) + (B % C)) % C);
+	printf("%d\n", (A*B) % C);
+	printf("%d\n", ((A % C) *(B % C)) % C);
 
 	return 0;
 }
