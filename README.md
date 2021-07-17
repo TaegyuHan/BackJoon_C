@@ -12,3 +12,4 @@ URL : [https://solved.ac/profile/gksxorb147](https://solved.ac/profile/gksxorb14
 
 - 2021년 7월 8일  실버(5) 달성!
 - 2021년 7월 14일 실버(4) 달성!
+- 2021년 7월 17일 실버(3) 달성!
