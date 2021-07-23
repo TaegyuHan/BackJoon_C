@@ -3,7 +3,7 @@
 
 import os
 
-path = "C:\github\BackJoon_C\\bb"
+path = "C:\github\BackJoon_C\\as"
 folder_list = os.listdir(path)
 
 for folder in folder_list:
