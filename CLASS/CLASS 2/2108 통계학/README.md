@@ -65,6 +65,7 @@ void mergeSort(int data[], int left, int right)
     }
 }
 
+
 void InputIntData(int* num)
 {
     scanf("%d", num);
@@ -77,7 +78,7 @@ void InsertDataToTable(Number* Number, int num)
         (IndexTable[num].plus++);
         if (IndexTable[num].plus > Number->modCount)
         {
-            Number->modCount = IndexTable[num].plus;
+            Number->modCount++;
             Number->modIndex = num;
             Number->modType = 1;
         }
@@ -87,12 +88,11 @@ void InsertDataToTable(Number* Number, int num)
         (IndexTable[num*-1].minus++);
         if (IndexTable[num * -1].minus > Number->modCount)
         {
-            Number->modCount = IndexTable[num].minus;
+            Number->modCount++;
             Number->modIndex = num;
             Number->modType = 0;
         }
     }
-
 }
 
 void mean(Number* Number)
@@ -127,6 +127,7 @@ int main()
     // 수의 개수
     InputIntData(&DATA_COUNT);
 
+
     for (i = 0; i < DATA_COUNT; i++)
     {
         // 데이터 받기
@@ -139,14 +140,10 @@ int main()
         InsertDataToTable(&Number, Number.NumberArray[i]);
     }
     
-    printf("Number.modIndex : %d\n", Number.modIndex);
-    printf("Number.modCount : %d\n", Number.modCount);
-    printf("Number.modType: %d\n", Number.modType);
-    
     // 산술 평균
     mean(&Number);
 
-    mergeSort(Number.NumberArray, 0, DATA_COUNT -1);
+    mergeSort(Number.NumberArray, 0, DATA_COUNT - 1);
 
     // 중앙값
     median(&Number);
