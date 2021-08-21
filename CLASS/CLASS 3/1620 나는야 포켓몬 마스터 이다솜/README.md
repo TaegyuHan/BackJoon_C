@@ -69,7 +69,7 @@ int main(void)
 }
 ```
 
-시간초과
+시간초과 수정필요
 
 ```c
 #include <stdio.h>
