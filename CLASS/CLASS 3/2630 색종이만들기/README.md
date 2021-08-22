@@ -21,8 +21,8 @@ typedef struct _Paper
 } Paper;
 
 void PageCount(Paper* P, 
-			   int widthStart, int width, 
-			   int heigthStart, int heigth, int size)
+	 	int widthStart, int width, 
+		int heigthStart, int heigth, int size)
 {
 	int i=0, j = 0;
 	int sum = 0;
@@ -93,9 +93,9 @@ int main(void)
 
 	// 페이지 개수 카운트
 	PageCount(Data, 
-				0, Data->inputPageSize, // 넓이
-			  0, Data->inputPageSize, // 높이
-				Data->inputPageSize); // 크기
+		  0, Data->inputPageSize, // 넓이
+	          0, Data->inputPageSize, // 높이
+		  Data->inputPageSize); // 크기
 
 	// 결과
 	printf("%d\n", Data->zeroPaperCnt);
