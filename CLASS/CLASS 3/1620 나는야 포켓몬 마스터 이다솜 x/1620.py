@@ -1,5 +1,5 @@
 import sys
-
+##
 sys.stdin = open('./1620.txt')
 
 input_count, find_count = \
