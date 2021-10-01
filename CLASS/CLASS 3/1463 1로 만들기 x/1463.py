@@ -1,23 +1,20 @@
 import sys
 
-sys.stdin = open('./1463.txt')
-
+# sys.stdin = open('./1463.txt')
 N = int(sys.stdin.readline())
-restul_count = 0
 
-def find_count(num):
+#            0  1 숫자
+num_list = [0, 0]
 
-    if num == 1: return
+for num in range(2, N+1):
+    min_num = num_list[num - 1] + 1 # 1빼는 경우
 
-    global restul_count
-    restul_count += 1
+    if num % 3 == 0: # 3으로 나눠지는 경우   
+        min_num = min(min_num, num_list[num//3] + 1)
 
-    if num % 2 == 0 and (num-1) % 3 == 0:
-    elif num % 3 == 0:
-    elif num % 2 == 0:
+    if num % 2 == 0:  # 2으로 나눠지는 경우
+        min_num = min(min_num, num_list[num//2] + 1)
 
-    return find_count(num - 1) + find_count(num - 2) + find_count(num - 3)
+    num_list.append(min_num)
 
-for _ in range(N):
-  tmp = int(sys.stdin.readline())
-  print(find_count(tmp))
+print(num_list[N])
