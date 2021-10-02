@@ -1,6 +1,6 @@
 import sys
 
-# sys.stdin = open('./11727.txt')
+# sys.stdin = open('./11726.txt')
 
 N = int(sys.stdin.readline())
 
