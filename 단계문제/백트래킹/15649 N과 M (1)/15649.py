@@ -15,7 +15,7 @@ def backtracking(N, M, data_list, print_list):
 
 
 if __name__ == '__main__':
-    # sys.stdin = open('./15649.txt')
+    sys.stdin = open('./15649.txt')
     N, M = map(int, sys.stdin.readline().split())
     data_list = [i for i in range(1, N+1)]
     backtracking(N, M, data_list, [])
