@@ -1,6 +1,6 @@
 import sys
 
-sys.stdin = open("./11724.txt")
+# sys.stdin = open("./11724.txt")
 
 # 데이터 입력
 node_count, line_count = map(int, sys.stdin.readline().split())
@@ -18,10 +18,9 @@ while check_node_set:
     result += 1
     
     while stack:
-        check_node_set = check_node_set - stack
-        node = stack.pop()
-        check_node_set = check_node_set - linked_line_table[node]
-        stack.update(linked_line_table[node].copy())
+        check_node_set = (check_node_set - stack)
+        
+        if tmp_set := (linked_line_table[stack.pop()] & check_node_set):
+            stack = tmp_set | stack
 
 print(result)
-print(linked_line_table)
