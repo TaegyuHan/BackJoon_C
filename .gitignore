@@ -6,8 +6,15 @@
 /BackJoon/BackJoon/BackJoon.vcxproj.user
 
 
-
 /BackJoon/BackJoon/Debug
 /BackJoon/.vs
+
+modules.xml
+profiles_settings.xml
+misc.xml
+vcs.xml
+main.py
+workspace.xml
+*.iml
 
 /.idea
