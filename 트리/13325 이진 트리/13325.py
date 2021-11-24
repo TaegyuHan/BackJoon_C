@@ -1,6 +1,7 @@
 from sys import stdin as input
 
 class FBTree:
+
     def __init__(self):
         self.node_height = 0
         self.node_edge = []
