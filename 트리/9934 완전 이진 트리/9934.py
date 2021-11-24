@@ -17,9 +17,9 @@ class CBTree:
     def recursive_search(self, height):
         if height > self.node_height - 1:
             return
-        self.recursive_search(height+1)
+        self.recursive_search(height + 1)
         self.result_node_list[height].append(self.node_number_list.pop())
-        self.recursive_search(height+1)
+        self.recursive_search(height + 1)
 
     def result(self):
         root_node_index = 0
