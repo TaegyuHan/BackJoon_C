@@ -1,0 +1,15 @@
+from sys import stdin as input
+
+class P13597:
+
+    def input_data(self):
+        pass
+
+    def result(self):
+        pass
+
+if __name__ == '__main__':
+    input = open('')
+    P = P13597()
+    P.input_data()
+    P.result()
