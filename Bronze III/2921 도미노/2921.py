@@ -6,11 +6,15 @@ class P2921:
         self.N = int(input.readline())
 
     def result(self):
-        self.N * self.N * 3
+        sum = 0
+        for i in range(self.N + 1):
+            for j in range(i, self.N + 1):
+                sum += i + j
+        print(sum)
 
 
 if __name__ == '__main__':
-    input = open('./2921.txt')
+    # input = open('./2921.txt')
     P = P2921()
     P.input_data()
     P.result()
