@@ -1,3 +1,4 @@
+import time
 from sys import stdin as input
 from dataclasses import dataclass
 
@@ -10,6 +11,8 @@ class P:
         pass
 
 if __name__ == '__main__':
+    start = time.time()  # 시작 시간 저장
     input = open('')
     P = P()
     P.result()
+    print("time :", time.time() - start)
