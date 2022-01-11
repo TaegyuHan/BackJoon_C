@@ -4,7 +4,7 @@ from dataclasses import dataclass
 
 class P:
 
-    def __input_data(self) -> None:
+    def _input_data(self) -> None:
         pass
 
     def result(self) -> None:
