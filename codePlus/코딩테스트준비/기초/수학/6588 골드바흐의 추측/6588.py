@@ -13,7 +13,7 @@ class P:
         self.N = int(input.readline())
         return self.N
 
-    def _sieve_of_eratosthenes(self):
+    def _sieve_of_eratosthenes(self) -> None:
         """에라토스테네스 체"""
         for i in range(2, int(self.MAX*0.6)):
             if self.PN[i] == True:
@@ -36,7 +36,7 @@ class P:
 
 if __name__ == '__main__':
     # start = time.time()  # 시작 시간 저장
-    # input = open('./6588.txt')
+    input = open('./6588.txt')
     P = P()
     P.result()
     # print("time :", time.time() - start)

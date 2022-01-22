@@ -66,7 +66,7 @@ class P:
         # print()
         return True
 
-    def _change_cnady_down(self) -> None:
+    def _change_cnady_down(self) -> None or bool:
         """현위치의 사탕 아래와 위치 변경"""
         # 마지막 row는 오른쪽만 비교
         if self.row >= self.BOARD_SIZE - 1:
