@@ -412,14 +412,14 @@ class P:
 
             chocolate += 1
 
-            if chocolate == 3:
+            if chocolate == 1:
                 self._show()
                 break
 
-            if self._temperature_check():
-                print(chocolate)
-                self._show()
-                break
+            # if self._temperature_check():
+            #     print(chocolate)
+            #     self._show()
+            #     break
 
             # if chocolate == 53:
             #     self._show()
