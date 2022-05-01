@@ -109,11 +109,8 @@ class P:
 
             for col in range(col, -1, -1):
                 if not D.fish_tank[row][col]: break
-
-                tmp_fish_tank = []
                 tcol = 0
                 for row in range(D.fish_tank_count - 1, row - 1, -1):
-                    tmp_fish_tank.append((row, col, D.fish_tank[row][col]))
                     nrow, ncol = mrow - height, up_col + tcol
 
                     # 변경하기
@@ -233,23 +230,20 @@ class P:
 
     def _max_min_diff(self):
         """ 최대 최서 차이 """
-        tmp_max = 0
-        tmp_min = MAX
-
-        for row in D.fish_tank[S.BOTTOM]:
-            if tmp_max < row:
-                tmp_max = row
-            if tmp_min > row:
-                tmp_min = row
-
-        if tmp_max - tmp_min == D.break_number:
+        if max(D.fish_tank[S.BOTTOM]) \
+                - min(D.fish_tank[S.BOTTOM]) <= D.break_number:
             return True
         return False
 
     def run(self) -> None:
         answer_count = 0
         while True:
-            answer_count += 1
+
+            if self._max_min_diff():
+                # self._show_fish_tank()
+                print(answer_count)
+                return
+
             self._add_fish()
             self._raise_left_fish_tank()
 
@@ -261,10 +255,7 @@ class P:
             self._fish_comparison()
             self._spread_fish_tank()
 
-            if self._max_min_diff():
-                print(answer_count)
-                return
-
+            answer_count += 1
 
 if __name__ == '__main__':
     # input = open('./23291.txt')
