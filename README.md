@@ -18,7 +18,8 @@ URL : [https://solved.ac/profile/gksxorb147](https://solved.ac/profile/gksxorb14
 - 2021년 10월 02일 골드(5) 달성!
 - 2021년 11월 06일 골드(4) 달성!
 - 2021년 12월 19일 골드(3) 달성!
-- 2022년 04월 12일 골드(2) 달성!
+- 2022년 02월 02일 골드(2) 달성!
+- 2022년 04월 18일 골드(1) 달성!
 
 알고리즘의 고수 ( python )<br>
 [teferi00](https://www.acmicpc.net/user/teferi00)
