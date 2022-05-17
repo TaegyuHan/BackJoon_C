@@ -1,7 +1,7 @@
 """
-    Solution code for "BaekJoon 알고리즘 수업 - 선택정렬 1".
+    Solution code for "BaekJoon 알고리즘 수업 - 선택정렬 2".
 
-    - Problem link: https://www.acmicpc.net/problem/23881
+    - Problem link: https://www.acmicpc.net/problem/23882
 """
 from sys import stdin as input
 
@@ -11,7 +11,6 @@ class P:
     def __init__(self) -> None:
         self._num, self._check_number = map(int, input.readline().split())
         self._list = list(map(int, input.readline().split()))
-
 
     def selection_sort(self):
         """ 선택 정렬 """

@@ -1,0 +1,4 @@
+2
+ab ij ef gh
+ef  gh ij cd
+ab cd ef gh ij

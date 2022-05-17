@@ -1,9 +1,11 @@
-"""Solution code for "BaekJoon ???. ???".
-
-- Problem link: https://www.acmicpc.net/problem/???
 """
+    Solution code for "BaekJoon ???. ???".
 
+    - Problem link: https://www.acmicpc.net/problem/???
+"""
 from sys import stdin as input
+import sys; sys.setrecursionlimit(2500)
+input = open('')
 
 
 class P:
@@ -11,10 +13,10 @@ class P:
     def __init__(self) -> None:
         pass
 
-    def result(self) -> None:
+    def run(self) -> None:
         pass
 
+
 if __name__ == '__main__':
-    input = open('')
     P = P()
-    P.result()
+    P.run()

@@ -3,132 +3,75 @@
 
     - Problem link: https://www.acmicpc.net/problem/1918
 """
+
 from sys import stdin as input
 
 
 class S:
-    """ 부호 """
-    PLUS = "+"
-    MINUS = "-"
-    PM = (PLUS, MINUS)
-
-    DIV = "/"
-    MUL = "*"
-    DM = (DIV, MUL)
 
     OPEN = "("
     CLOSE = ")"
-    OC = (OPEN, CLOSE)
 
-    ALL = PM + DM + OC
-
-    LIST_END = -1
-
-
-class D:
-    """ STRING """
-    STRING: str
-
-
-class SignStack:
-    """ 기호 스택 """
-    data = []
-
-    @staticmethod
-    def append(x):
-        SignStack.data.append(x)
-
-    @staticmethod
-    def pop():
-        return SignStack.data.pop()
-
-    @staticmethod
-    def empty():
-        if not SignStack.data:
-            return True
-        return False
-
-    @staticmethod
-    def check():
-        return SignStack.data[-1]
-
-    @staticmethod
-    def close():
-        for i in range(len(SignStack.data) - 1, -1, -1):
-            yield SignStack.data.pop()
-
-    @staticmethod
-    def range():
-        for _ in range(len(SignStack.data)):
-            yield SignStack.data.pop()
+    ADD = "+"
+    SUB = "-"
+    MUL = "*"
+    DIV = "/"
+    ADD_SUB = (ADD, SUB)
+    MUL_DIV = (MUL, DIV)
 
 
 class P:
 
     def __init__(self) -> None:
-        D.STRING = input.readline().strip()
+        self.stack = []
+
+    def stack_top(self):
+        """ 스택 맨위 값 """
+        return self.stack[-1]
 
     def run(self) -> None:
-        answer, *string = D.STRING
-        for num_or_sign in string:
+        string = input.readline().strip()
+        answer = ""
 
-            if SignStack.empty() and num_or_sign in S.ALL:
-                SignStack.append(num_or_sign)
-                continue
+        for data in string:
 
-            elif num_or_sign == S.OPEN:
-                SignStack.append(num_or_sign)
-                continue
+            if data.isalpha():
+                answer += data
 
-            elif num_or_sign == S.CLOSE:
-                for sign in SignStack.close():
-                    if sign == S.OPEN: break
-                    answer += sign
-                continue
+            elif not self.stack:
+                self.stack.append(data)
 
-            elif num_or_sign == S.DIV:
-                SignStack.append(num_or_sign)
-                sign = SignStack.check()
-                if sign in S.DM:
-                    answer += SignStack.pop()
-                continue
+            elif data in S.ADD_SUB:
+                if self.stack_top() in S.MUL_DIV:
+                    while self.stack:
+                        if self.stack_top() == S.OPEN: break
+                        answer += self.stack.pop()
 
-            elif num_or_sign == S.MUL:
-                SignStack.append(num_or_sign)
-                sign = SignStack.check()
-                if sign in S.DM:
-                    answer += SignStack.pop()
-                continue
+                elif self.stack_top() in S.ADD_SUB:
+                    answer += self.stack.pop()
 
-            elif num_or_sign == S.PLUS:
-                sign = SignStack.check()
-                if sign in S.PM:
-                    SignStack.append(num_or_sign)
-                if sign in S.DM:
-                    for sign in SignStack.range():
-                        answer += sign
-                    continue
-                continue
+                self.stack.append(data)
 
-            elif num_or_sign == S.MINUS:
-                sign = SignStack.check()
-                if sign in S.PM:
-                    SignStack.append(num_or_sign)
-                if sign in S.DM:
-                    for sign in SignStack.range():
-                        answer += sign
-                    continue
-                continue
+            elif data in S.MUL_DIV:
+                if self.stack_top() in S.MUL_DIV:
+                    answer += self.stack.pop()
+                self.stack.append(data)
 
-            answer += num_or_sign
+            elif data == S.OPEN:
+                self.stack.append(data)
 
-        for sign in SignStack.range():
-            answer += sign
+            elif data == S.CLOSE:
+                while self.stack:
+                    before = self.stack.pop()
+                    if before == S.OPEN: break
+                    answer += before
+
+        while self.stack:
+            answer += self.stack.pop()
 
         print(answer)
 
-
 if __name__ == '__main__':
-    input = open('1918.txt')
+    # input = open('./1918.txt')
     P = P()
     P.run()

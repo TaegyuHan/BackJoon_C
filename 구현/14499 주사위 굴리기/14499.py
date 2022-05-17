@@ -86,7 +86,7 @@ class D:
         """ 주사위 움직임 """
         # 주사위 데이터 변경하기
         next_map_direction, (trow, tcol) = D.direction[D.map_direction][direction]
-        print(D.map_direction, D.direction[D.map_direction][direction])
+        # print(D.map_direction, D.direction[D.map_direction][direction])
         nrow, ncol = D.row + trow, D.col + tcol
 
         # 범위 밖으로 나가는 경우
@@ -98,19 +98,19 @@ class D:
 
         # 주사위 값이 0이고 지도 값이 0이 아닌경우
         # 둘이 값 변경
-        print(map_direction, D.value[map_direction], B.board[nrow][ncol])
-        if D.value[map_direction] == 0 \
+        # print(D.map_direction, D.value[D.map_direction], B.board[nrow][ncol])
+        if D.value[D.map_direction] == 0 \
                 and B.board[nrow][ncol] != 0:
-            D.value[map_direction], B.board[nrow][ncol] = \
-                B.board[nrow][ncol], D.value[map_direction]
+            D.value[D.map_direction], B.board[nrow][ncol] = \
+                B.board[nrow][ncol], D.value[D.map_direction]
 
         # 주사위 값이 0이 아니고 지도 값이 0인 경우
-        elif D.value[map_direction] == 0 \
+        elif D.value[D.map_direction] == 0 \
                 and B.board[nrow][ncol] != 0:
-            D.value[map_direction], B.board[nrow][ncol] = \
-                B.board[nrow][ncol], D.value[map_direction]
+            D.value[D.map_direction], B.board[nrow][ncol] = \
+                B.board[nrow][ncol], D.value[D.map_direction]
 
-        print(D.value[D.direction[map_direction][D.OPP]])
+        # print(D.value[D.direction[D.map_direction][D.OPP]])
 
 class B:
     """ 판 정보 """
@@ -146,11 +146,7 @@ class P:
     def run(self) -> None:
         for i, move_num in enumerate(D.moves):
             D.move(move_num)
-            B.show_board()
-            print("value:", D.value)
-            print("row, col:", D.row, D.col)
-            if i == 1:
-                break
+            print(D.map_direction)
 
 
 if __name__ == '__main__':

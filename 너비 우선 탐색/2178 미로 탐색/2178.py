@@ -58,7 +58,7 @@ class Board:
 
 
 if __name__ == '__main__':
-    input = open("./2178.txt")
+    input = open("2178.txt")
     BD = Board()
     BD.input_data()
     BD.print_result()
