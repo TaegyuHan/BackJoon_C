@@ -15,7 +15,7 @@ class D:
     CUT_NODE = int(input.readline())
     leaf_count = []
     GRAPH = {}
-    ROOT_NODE = 0
+    ROOT_NODE = []
 
     @staticmethod
     def make_graph():
@@ -26,13 +26,20 @@ class D:
 
         for node1, node2 in enumerate(D.NODES):
             if node2 == -1: # 루트 노드 찾기
-                D.ROOT_NODE = node1
+                D.ROOT_NODE.append(node1)
                 continue
             D.GRAPH[node2].append(node1)
 
 
 class P:
     """ 문제 풀이 """
+
+    def _one_two_node_check(self):
+        """ 노드 1개 또는 2개 체크 """
+        if D.NODE_COUNT >= 3: return
+        elif D.NODE_COUNT == 1: print(0)
+        elif D.NODE_COUNT == 2: print(1)
+        exit()
 
     def _DFS(self, node):
         """ 우선 깊이 탐색 """
@@ -46,11 +53,17 @@ class P:
         return D.leaf_count[node]
 
     def run(self) -> None:
+        self._one_two_node_check()
         D.make_graph()
-        self._DFS(D.ROOT_NODE)
-        print(D.leaf_count[D.ROOT_NODE]
-              - D.leaf_count[D.CUT_NODE])
+        leaf_sum = 0
+        for root_node in D.ROOT_NODE:
+            leaf_sum += self._DFS(root_node)
 
+        if leaf_sum == 1: # 줄 예외 처리
+            answer = 1
+        else:
+            answer = leaf_sum - D.leaf_count[D.CUT_NODE]
+        print(answer)
 
 if __name__ == '__main__':
     P = P()
