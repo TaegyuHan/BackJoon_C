@@ -56,18 +56,7 @@ class D:
     @staticmethod
     def init_vistied():
         """ 방문 처리 초기화 """
-        D.visited = [[False] * D.COL for _ in range(D.ROW)]
-
-    @staticmethod
-    def move_key(row, col):
-        """ 나 이동하기 """
-        D.key += D.keys[D.board[row][col]]
-        D.board[row][col] = D.GROUND
-        D.board[D.my_row][D.my_col], D.board[row][col] = \
-            D.board[row][col], D.board[D.my_row][D.my_col]
-
-        D.my_row, D.my_col = row, col
-
+        D.visited = [[[False] * D.COL for _ in range(D.ROW)] for _ in range(64)]
 
 class P:
 
@@ -77,40 +66,42 @@ class P:
             print(*row)
         print()
 
-    def _check_key(self, row, col, door):
+    def _check_key(self, door, key):
         """ 키 존재 확인하기 """
-        if D.keys[door.lower()] & D.key:
-            D.board[row][col] = D.GROUND
+        if D.keys[door.lower()] & key:
             return False
         return True
 
     def _BFS(self):
         """ BFS 탐색 """
-        q = deque([(D.my_row, D.my_col, 0)])
-        find_key = []
+        D.init_vistied()
+        move_count = 0
+        keys = 0
+        q = deque([(D.my_row, D.my_col, move_count, keys)])
 
         while q:
-            crow, ccol, cmove = q.popleft()
-            if D.visited[crow][ccol]: continue
-            D.visited[crow][ccol] = True
+            crow, ccol, cmove, ckeys = q.popleft()
+            if D.visited[ckeys][crow][ccol]: continue
+            D.visited[ckeys][crow][ccol] = True
+            print(crow, ccol)
 
             for trow, tcol in M.GO:
                 nrow, ncol = trow + crow, tcol + ccol
                 if not (0 <= nrow < D.ROW and 0 <= ncol < D.COL): continue
+                print(nrow, ncol)
                 if (state := D.board[nrow][ncol]) == D.WALL: continue
-                if state.isupper() and self._check_key(nrow, ncol, state): continue
+                if state.isupper() and self._check_key(state, keys): continue
+                # 키 얻음
                 if state.islower():
-                    D.move_count += (cmove + 1)
-                    D.move_key(nrow, ncol)
-                    D.init_vistied()
+                    q.append((nrow, ncol, cmove + 1, ckeys | D.keys[D.board[nrow][ncol]]))
                     continue
-
+                #
                 if D.board[nrow][ncol] == D.EXIT:
                     D.move_count += (cmove + 1)
                     print(D.move_count)
                     exit()
 
-                q.append((nrow, ncol, cmove + 1))
+                q.append((nrow, ncol, cmove + 1, ckeys))
 
         return False
 
@@ -121,7 +112,6 @@ class P:
             pass
 
         print(-1)
-
 
 if __name__ == '__main__':
     P = P()
