@@ -1,0 +1,11 @@
+SELECT
+    F.ORDER_ID,
+    F.PRODUCT_ID,
+    TO_CHAR(F.OUT_DATE, 'YYYY-MM-DD') AS OUT_DATE,
+    CASE
+        WHEN TO_CHAR(F.OUT_DATE, 'MM-DD') <= '05-01' THEN '출고완료'
+        WHEN F.OUT_DATE IS NULL THEN '출고미정'
+        ELSE '출고대기'
+    END AS "출고여부"
+FROM FOOD_ORDER F
+ORDER BY ORDER_ID;
